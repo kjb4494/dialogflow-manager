@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block pageHeading %}
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">{% block pageHeadingTitle %}Test Main Page{% endblock pageHeadingTitle %}</h1>
+  </div>
+{% endblock pageHeading %}
+
+{% block contentRows %}
+  Hello World!
+{% endblock contentRows %}
+
+{% block plugins %}
+  <script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
+{% endblock plugins %}

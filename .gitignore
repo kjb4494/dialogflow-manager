@@ -1,0 +1,6 @@
+config.py
+dialogflow-service-account.json
+venv
+test_codes
+migrations
+db.sqlite3

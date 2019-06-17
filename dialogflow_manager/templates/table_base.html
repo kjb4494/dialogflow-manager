@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+  <link href="{% static 'vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
+{% endblock styles %}
+
+{% block pageHeading %}
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">
+      <!-- page head title -->
+      {% block pageHeadingTitle %}
+      {% endblock pageHeadingTitle %}
+    </h1>
+    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+      <!-- page button value -->
+      {% block pageHeadingButton %}
+      {% endblock pageHeadingButton %}
+    </a>
+  </div>
+{% endblock pageHeading %}
+
+{% block contentRows %}
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">DataTable</h6>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <!-- table content -->
+        {% block dataTable %}
+        {% endblock dataTable %}
+      </div>
+    </div>
+  </div>
+{% endblock contentRows %}
+
+{% block plugins %}
+  <script src="{% static 'vendor/datatables/jquery.dataTables.min.js' %}"></script>
+  <script src="{% static 'vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
+{% endblock plugins %}
+
+{% block scripts %}
+  <script src="{% static 'js/demo/datatables-demo.js' %}"></script>
+{% endblock scripts %}
