@@ -46,7 +46,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{% url 'home' %}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -57,14 +57,14 @@
       <!-- Nav Item - Intents -->
       <li class="nav-item">
         <a class="nav-link" href="{% url 'intents' %}">
-          <i class="fas fa-fw fa-chart-area"></i>
+          <i class="fas fa-fw fa-comment"></i>
           <span>Intents</span></a>
       </li>
 
       <!-- Nav Item - Entities -->
       <li class="nav-item">
         <a class="nav-link" href="{% url 'entities' %}">
-          <i class="fas fa-fw fa-table"></i>
+          <i class="fas fa-fw fa-code-branch"></i>
           <span>Entities</span></a>
       </li>
 
@@ -73,14 +73,14 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        For Test
+        Develop
       </div>
 
       <!-- Nav Item - Test -->
       <li class="nav-item">
         <a class="nav-link" href="{% url 'test' %}">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Test</span></a>
+          <i class="fas fa-fw fa-cogs"></i>
+          <span>Test Page</span></a>
       </li>
 
       <!-- Sidebar Toggler (Sidebar) -->
@@ -106,6 +106,7 @@
           </button>
 
           <!-- Topbar Navbar -->
+          {% if user.is_authenticated %}
           <ul class="navbar-nav ml-auto">
 
             <!-- Nav Item - User Information -->
@@ -116,28 +117,16 @@
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Profile
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Activity Log
-                </a>
-                <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Logout
+                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                Logout
                 </a>
               </div>
             </li>
-
           </ul>
-
+          {% else %}
+            <a class="btn btn-user btn-block border" href="{% url 'login' %}">로그인 하기</a>
+          {% endif %}
         </nav>
         <!-- End of Topbar -->
 
@@ -191,7 +180,7 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
+          <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
         </div>
       </div>
     </div>
