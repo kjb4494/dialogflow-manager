@@ -12,6 +12,12 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 
+# Dialogflow Config Settings
+import config
+DLF_PROJECT_ID = config.project_id
+DLF_LANG = config.language_code
+
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
