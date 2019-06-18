@@ -9,13 +9,15 @@
     <thead>
       <tr>
         <th>인텐트명</th>
-        <th>선호도</th>
+        <th>입력 문맥</th>
+        <th>출력 문맥</th>
       </tr>
     </thead>
     <tfoot>
       <tr>
         <th>인텐트명</th>
-        <th>선호도</th>
+        <th>입력 문맥</th>
+        <th>출력 문맥</th>
       </tr>
     </tfoot>
     {% if intents %}
@@ -23,7 +25,18 @@
         {% for intent in intents %}
           <tr>
             <td>{{ intent.display_name }}</td>
-            <td>{{ intent.priority }}</td>
+
+            <td>
+              {% for input_context in intent.input_context.all %}
+                {{ input_context.display_name }}
+              {% endfor %}
+            </td>
+
+            <td>
+              {% for output_context in intent.output_context.all %}
+                {{ output_context.display_name }}
+              {% endfor %}
+            </td>
           </tr>
         {% endfor %}
       </tbody>
