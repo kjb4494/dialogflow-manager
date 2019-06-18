@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from . import errors
 
 
 # Create your views here.
@@ -16,3 +18,17 @@ def entities(request):
 
 def test(request):
     return render(request, 'test.html')
+
+
+def intents_sync(request):
+    ref = request.META.get('HTTP_REFERER')
+    if ref is None:
+        return errors.bad_requests(request)
+    return HttpResponseRedirect(ref)
+
+
+def entities_sync(request):
+    ref = request.META.get('HTTP_REFERER')
+    if ref is None:
+        return errors.bad_requests(request)
+    return HttpResponseRedirect(ref)

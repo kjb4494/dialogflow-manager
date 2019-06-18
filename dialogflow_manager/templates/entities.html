@@ -486,3 +486,8 @@
     </tbody>
   </table>
 {% endblock dataTable %}
+
+{% block syncButton %}
+  <br>
+  <a href="{% url 'entities_sync' %}" class="btn btn-user btn-block border">동기화</a>
+{% endblock %}

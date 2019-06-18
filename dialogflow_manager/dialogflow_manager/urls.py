@@ -24,5 +24,7 @@ urlpatterns = [
     path('intents/', views.intents, name='intents'),
     path('entities/', views.entities, name='entities'),
     path('test/', views.test, name='test'),
+    path('intents_sync/', views.intents_sync, name='intents_sync'),
+    path('entities_sync/', views.entities_sync, name='entities_sync'),
     path('accounts/', include('django.contrib.auth.urls'))
 ]
