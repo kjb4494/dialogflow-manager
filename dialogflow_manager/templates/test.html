@@ -9,24 +9,25 @@
     <thead>
       <tr>
         <th>인텐트명</th>
-        <th>입력 문맥</th>
-        <th>출력 문맥</th>
+        <th>선호도</th>
       </tr>
     </thead>
     <tfoot>
       <tr>
         <th>인텐트명</th>
-        <th>입력 문맥</th>
-        <th>출력 문맥</th>
+        <th>선호도</th>
       </tr>
     </tfoot>
-    <tbody>
-      <tr>
-        <td>FAQ.test_period</td>
-        <td>await_set_timer_res</td>
-        <td>await_timer_date</td>
-      </tr>
-    </tbody>
+    {% if intents %}
+      <tbody>
+        {% for intent in intents %}
+          <tr>
+            <td>{{ intent.display_name }}</td>
+            <td>{{ intent.priority }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    {% endif %}
   </table>
 {% endblock dataTable %}
 

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
+from .models import Intents
 from .libs import intents_mng
 from .decorators import requires_login
 from . import errors
@@ -12,7 +13,9 @@ def index(request):
 
 @requires_login
 def intents(request):
-    return render(request, 'intents.html')
+    values = Intents.objects.all()
+    context = {'intents': values}
+    return render(request, 'intents.html', context)
 
 
 @requires_login
@@ -22,7 +25,9 @@ def entities(request):
 
 @requires_login
 def test(request):
-    return render(request, 'test.html')
+    values = Intents.objects.all()
+    context = {'intents': values}
+    return render(request, 'test.html', context)
 
 
 @requires_login
@@ -30,7 +35,7 @@ def intents_sync(request):
     ref = request.META.get('HTTP_REFERER')
     if ref is None:
         return errors.bad_requests(request)
-    intents_mng.get_all_intents()
+    intents_mng.dlf_and_localdb_sync()
     return HttpResponseRedirect(ref)
 
 
